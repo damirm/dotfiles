@@ -1,0 +1,24 @@
+#!/bin/sh
+
+function encrypt_file_openssl {
+    $(cat $1 | openssl des3 -salt -out $1.enc)
+}
+
+function decrypt_file_openssl {
+    local name_without_enc=$(expr "$1" : '^\(.*\)\.enc$')
+    $(cat $1 | openssl des3 -d -salt -out $name_without_enc)
+}
+
+function encrypt_tar_openssl {
+    local default_encrypted_name=$1.tar.gz.enc
+    local encrypted_name=${2:-$default_encrypted_name}
+    $(tar cz $1 | openssl des3 -salt -out $encrypted_name)
+}
+
+function decrypt_tar_openssl {
+    decrypt_file_openssl $1 | tar xz -
+}
+
+function random_git_commit() {
+  git commit -m '$(curl -s http://whatthecommit.com/index.txt)'
+}

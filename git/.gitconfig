@@ -1,0 +1,22 @@
+[user]
+	name = Damir Makhmutov
+	email = iam@damir.space
+
+[color]
+	ui = true
+
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	br = branch
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = nano
+	filemode = false
+	ignorecase = false
+
+[push]
+	default = simple
