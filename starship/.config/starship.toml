@@ -1,0 +1,9 @@
+[aws]
+disabled = true
+
+[package]
+disabled = true
+
+[custom.cloudia-branch]
+command = 'arc info --json | jq -r .branch'
+when = 'arc root'

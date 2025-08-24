@@ -1,0 +1,84 @@
+[font]
+size = 16.0
+
+[font.bold]
+family = "JetBrainsMonoNL NFM"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMonoNL NFM"
+style = "Bold Italic"
+
+[font.italic]
+family = "JetBrainsMonoNL NFM"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMonoNL NFM"
+style = "Regular"
+
+[[keyboard.bindings]]
+chars = "\u001Bj"
+key = "J"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bk"
+key = "K"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bh"
+key = "H"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bl"
+key = "L"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bb"
+key = "Left"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bf"
+key = "Right"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0001c"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0001x"
+key = "w"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0001T"
+key = "K"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0001n"
+key = "}"
+mods = "Shift | Command"
+
+[[keyboard.bindings]]
+chars = "\u0001p"
+key = "{"
+mods = "Shift | Command"
+
+[window]
+decorations = "none"
+startup_mode = "Maximized"
+
+[window.padding]
+x = 5
+y = 0
+
+[general]
+live_config_reload = true
