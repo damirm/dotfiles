@@ -22,7 +22,7 @@ return {
 
 					map("n", "<leader>gr", function()
 						require("fzf-lua").lsp_references()
-					end, "Refereneces")
+					end, "References")
 
 					map("n", "<leader>gi", function()
 						require("fzf-lua").lsp_implementations()
@@ -52,7 +52,7 @@ return {
 					--
 					-- map("n", "<leader>gr", function()
 					-- 	require("trouble").toggle("lsp_references")
-					-- end, "Refereneces")
+					-- end, "References")
 
 					-- map("n", "<leader>gi", function()
 					-- 	require("trouble").toggle("lsp_implementations")
@@ -65,6 +65,11 @@ return {
 			local runtime_path = vim.split(package.path, ";")
 			table.insert(runtime_path, "lua/?.lua")
 			table.insert(runtime_path, "lua/?/init.lua")
+
+			local current_path = vim.fn.getcwd()
+			local python_extra_paths = (string.find(current_path, "cloudia") or string.find(current_path, "arcadia"))
+					and { "~/cloudia", "~/arcadia" }
+				or {}
 
 			local servers = {
 				bashls = {
@@ -95,6 +100,7 @@ return {
 								inlayHints = {
 									callArgumentNames = true,
 								},
+								extraPaths = python_extra_paths,
 							},
 						},
 					},
