@@ -3,7 +3,8 @@
 # Default colors
 [colors.primary]
 foreground = '#f0f0f0'
-background = '#26282a'
+# background = '#26282a'
+background = '#1c1c1c'
 
 [colors.cursor]
 background = '#f0f0f0'
