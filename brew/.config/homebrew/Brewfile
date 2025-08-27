@@ -55,6 +55,7 @@ brew "zoxide"
 
 # TODO: Should we try something like fish?
 brew "zsh"
+# TODO: Do I need that?
 brew "zsh-autosuggestions"
 brew "zplug"
 
