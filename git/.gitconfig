@@ -1,0 +1,7 @@
+[user]
+	name = Damir Makhmutov
+	email = iam@damir.space
+	username = damirm
+
+[core]
+editor = /usr/bin/nvim
