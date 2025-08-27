@@ -6,7 +6,10 @@ startup_command = "nvim"
 [[session]]
 name = "work"
 windows = ["cloud-java", "cloud-go", "bootstrap-templates", "salt-formula"]
-disable_startup_command = true
+
+[[session]]
+name = "junk"
+path = "~/tmp"
 
 [[window]]
 name = "cloud-go"
