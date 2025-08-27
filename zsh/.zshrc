@@ -21,7 +21,7 @@ export ZPLUG_HOME=/usr/local/opt/zplug
 # /zpug section
 # =======================================
 
-plugins=(git zsh-navigation-tools colored-man-pages themes asdf zsh-autosuggestions zsh-interactive-cd)
+plugins=(git zsh-navigation-tools colored-man-pages themes zsh-autosuggestions zsh-interactive-cd)
 
 export PATH="/usr/local/sbin:$PATH:$HOME/bin":"$HOME/go/bin:$HOME/.pub-cache/bin"
 
@@ -64,9 +64,6 @@ eval "$(fzf --zsh)"
 
 # Created by `pipx` on 2022-10-14 11:29:19
 export PATH="$PATH:/Users/yesworld/.local/bin"
-
-# TODO: Do I really need that?
-. ~/.asdf/plugins/java/set-java-home.zsh
 
 export DOCKER_CONFIG="$HOME/.docker"
 export HELM_REGISTRY_CONFIG="$DOCKER_CONFIG/config.json"
