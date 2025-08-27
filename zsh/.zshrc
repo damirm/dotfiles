@@ -6,7 +6,6 @@ export TERM=xterm-256color
 export ZSH=$HOME/.oh-my-zsh
 export UPDATE_ZSH_DAYS=1
 
-# ZSH_THEME=""
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
@@ -61,21 +60,18 @@ if [ -f '/Users/yesworld/yandex-cloud/completion.zsh.inc' ]; then source '/Users
 if [ -f '/Users/yesworld/ycp/path.bash.inc' ]; then source '/Users/yesworld/ycp/path.bash.inc'; fi
 
 eval "$(zoxide init zsh)"
-# eval $(thefuck --alias)
 eval "$(fzf --zsh)"
+
 # Created by `pipx` on 2022-10-14 11:29:19
 export PATH="$PATH:/Users/yesworld/.local/bin"
 
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# TODO: Do I really need that?
 . ~/.asdf/plugins/java/set-java-home.zsh
-# . "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-
-source "/Users/yesworld/.asdf/installs/rust/1.76.0/env"
 
 export DOCKER_CONFIG="$HOME/.docker"
 export HELM_REGISTRY_CONFIG="$DOCKER_CONFIG/config.json"
 
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
+export DOCKER_HOST=$(colima -p rosetta status -j | jq -r .docker_socket)
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-# export PATH="/Users/yesworld/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+eval "$(mise activate zsh)"

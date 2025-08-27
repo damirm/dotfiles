@@ -1,0 +1,25 @@
+[[session]]
+name = "dotfiles"
+path = "~/dotfiles"
+startup_command = "nvim"
+
+[[session]]
+name = "work"
+windows = ["cloud-java", "cloud-go", "bootstrap-templates", "salt-formula"]
+disable_startup_command = true
+
+[[window]]
+name = "cloud-go"
+path = "~/cloudia/cloud/cloud-go"
+
+[[window]]
+name = "cloud-java"
+path = "~/cloudia/cloud/cloud-java"
+
+[[window]]
+name = "bootstrap-templates"
+path = "~/cloudia/cloud/deploy/bootstrap/templates"
+
+[[window]]
+name = "salt-formula"
+path = "~/cloudia/cloud/deploy/salt-formula"

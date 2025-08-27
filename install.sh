@@ -7,7 +7,7 @@ if command -v brew >/dev/null 2>&1; then
 fi
 
 echo "Creating symlinks..."
-stow -t $HOME alacritty tmux nvim zsh brew starship kitty
+stow -t $HOME alacritty tmux nvim zsh brew starship kitty sesh mise
 
 # NOTE: Moved to tmux.conf itself.
 # TMUX_TPM_DIR="$HOME/.tmux/plugins/tpm"

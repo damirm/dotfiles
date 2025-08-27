@@ -93,12 +93,15 @@ cask "hiddenbar"
 cask "keepingyouawake"
 cask "love"
 cask "processing"
-cask "rectangle"
 cask "shottr"
 cask "beekeeper-studio"
 cask "ghostty"
 cask "wezterm"
 cask "vlc"
+
+# Tiling window manager
+cask "amethyst"
+cask "rectangle"
 
 # cask "intellij-idea-ce"
 # cask "kitty"
