@@ -8,5 +8,8 @@ sudo dnf copr enable -y dejan/lazygit
 echo "Installing packages..."
 sudo dnf install -y stow zsh nvim mise ripgrep tmux uv ruff starship lazygit fzf zoxide xclip
 
-echo "Installing gnome settings..."
-gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_shifted_capslock']"
+# Gnome setup.
+if command -v gsettings &>/dev/null; then
+    echo "Installing gnome settings..."
+    gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_shifted_capslock']"
+fi
