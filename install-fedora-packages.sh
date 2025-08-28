@@ -1,12 +1,33 @@
 #!/usr/bin/env bash
 
+echo "Enabling rpm fusion..."
+sudo rpm -Uvh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo rpm -Uvh http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
 echo "Enable dnf repositories..."
 sudo dnf copr enable -y jdxcode/mise
 sudo dnf copr enable -y atim/starship
 sudo dnf copr enable -y dejan/lazygit
 
 echo "Installing packages..."
-sudo dnf install -y stow zsh nvim mise ripgrep tmux uv ruff starship lazygit fzf zoxide xclip
+sudo dnf install -y \
+    stow \
+    zsh \
+    nvim \
+    mise \
+    ripgrep \
+    tmux \
+    uv \
+    ruff \
+    starship \
+    lazygit \
+    fzf \
+    zoxide \
+    xclip \
+    fastfetch \
+    gnome-tweaks
+
+# gnome-shell-extension-manager
 
 # Gnome setup.
 if command -v gsettings &>/dev/null; then
@@ -27,3 +48,6 @@ flatpak install flathub com.visualstudio.code
 flatpak install flathub md.obsidian.Obsidian
 flatpak install flathub com.transmissionbt.Transmission
 flatpak install flathub com.jetbrains.IntelliJ-IDEA-Community
+
+# Misc settings.
+sudo systemctl disable NetworkManager-wait-online.service

@@ -5,3 +5,6 @@
 
 [core]
 editor = /usr/bin/nvim
+
+[color]
+ui = auto
