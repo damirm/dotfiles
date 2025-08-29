@@ -1,17 +1,23 @@
 #!/usr/bin/env bash
 
 function gnome_set {
-    local schema=$1
-    local key=$2
-    local value=$3
-    gsettings set $schema $key $value
+    local schema="$1"
+    local key="$2"
+    local value="$3"
+    gsettings set "$schema" "$key" "$value"
 }
 
 function install_nerd_font {
-    local remote_file=$1
+    local font_name="$1"
+    local remote_file="$2"
     local zip_file=$(basename $remote_file)
     local tmp_dir="/tmp"
     local dst_dir=$HOME/.local/share/fonts
+
+    if fc-list | grep -q "$font_name"; then
+        echo "Font $font_name is already exists, skipping..."
+        return 0
+    fi
 
     echo "Installing font from $remote_file..."
     wget -P $tmp_dir $remote_file
@@ -28,6 +34,11 @@ function install_gnome_extension {
     local tmp_dir="/tmp"
     local dst_dir="$HOME/.local/share/gnome-shell/extensions/$extension_id"
 
+    if test -d $dst_dir; then
+        echo "Gnome extension $extension_id is already installed, skipping..."
+        return 0
+    fi
+
     echo "Installing gnome extension $extension_url from $remote_file..."
 
     wget -P $tmp_dir $remote_file
@@ -41,13 +52,19 @@ echo "Setup dnf..."
 sudo dnf config-manager setopt fastestmirror=true
 sudo dnf config-manager setopt max_parallel_downloads=10
 
-echo "Enabling rpm fusion and terra..."
-# sudo rpm -Uvh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-# sudo rpm -Uvh http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf install -y \
-    https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-    https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+if ! dnf repolist | grep -q rpmfusion; then
+    echo "Enabling rpm fusion and terra..."
+    # sudo rpm -Uvh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+    # sudo rpm -Uvh http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+    sudo dnf install -y \
+        https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+        https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+    sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+
+    sudo dnf update -y
+    sudo dnf update -y @core
+fi
 
 # echo "Updating firmware..."
 # sudo fwupdmgr refresh --force
@@ -65,8 +82,6 @@ sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https:/
 sudo dnf check-update
 
 echo "Installing packages..."
-sudo dnf update -y
-sudo dnf update -y @core
 sudo dnf install -y \
     stow \
     zsh \
@@ -89,8 +104,7 @@ sudo dnf install -y \
     htop \
     btop
 
-echo "Installing fonts"
-install_nerd_font https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip
+install_nerd_font "JetBrainsMono" "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip"
 
 # Gnome setup.
 if command -v gsettings &>/dev/null; then
@@ -102,9 +116,24 @@ if command -v gsettings &>/dev/null; then
     install_gnome_extension "Vitals@CoreCoding.com" "https://github.com/corecoding/Vitals/releases/download/v72.0.0/vitals.zip"
 
     echo "Installing gnome settings..."
-    gnome_set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_shifted_capslock']"
+    gnome_set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier']"
+    # gnome_set org.gnome.desktop.input-sources sources "[('xkb', 'en'), ('xkb', 'ru')]"
+    # gnome_set org.gnome.desktop.wm.keybindings switch-input-source "['<Super>Space']"
     gnome_set org.gnome.desktop.interface color-scheme 'prefer-dark'
     gnome_set org.gnome.desktop.interface show-battery-percentage true
+    gnome_set org.gnome.mutter dynamic-workspaces false
+    gnome_set org.gnome.desktop.wm.preferences num-workspaces 5
+    gnome_set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>1']"
+    gnome_set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Super>2']"
+    gnome_set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Super>3']"
+    gnome_set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4']"
+    gnome_set org.gnome.desktop.wm.keybindings switch-to-workspace-5 "['<Super>5']"
+    gnome_set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Shift><Super>1']"
+    gnome_set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Shift><Super>2']"
+    gnome_set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Shift><Super>3']"
+    gnome_set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Shift><Super>4']"
+    gnome_set org.gnome.desktop.wm.keybindings move-to-workspace-5 "['<Shift><Super>5']"
+    gnome_set org.gnome.shell.keybindings toggle-application-view "['<Control>Space']"
 fi
 
 echo "Installing flatpak packages..."
