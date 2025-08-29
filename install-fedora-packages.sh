@@ -7,6 +7,12 @@ function gnome_set {
     gsettings set "$schema" "$key" "$value"
 }
 
+function gnome_reset {
+    local schema="$1"
+    local key="$2"
+    gsettings reset "$schema" "$key"
+}
+
 function install_nerd_font {
     local font_name="$1"
     local remote_file="$2"
@@ -54,14 +60,10 @@ sudo dnf config-manager setopt max_parallel_downloads=10
 
 if ! dnf repolist | grep -q rpmfusion; then
     echo "Enabling rpm fusion and terra..."
-    # sudo rpm -Uvh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-    # sudo rpm -Uvh http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-
     sudo dnf install -y \
         https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
         https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
     sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
-
     sudo dnf update -y
     sudo dnf update -y @core
 fi
@@ -116,13 +118,18 @@ if command -v gsettings &>/dev/null; then
     install_gnome_extension "Vitals@CoreCoding.com" "https://github.com/corecoding/Vitals/releases/download/v72.0.0/vitals.zip"
 
     echo "Installing gnome settings..."
-    gnome_set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier']"
-    # gnome_set org.gnome.desktop.input-sources sources "[('xkb', 'en'), ('xkb', 'ru')]"
-    # gnome_set org.gnome.desktop.wm.keybindings switch-input-source "['<Super>Space']"
+    gnome_set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier', 'grp:alt_space_toggle']"
+    gnome_set org.gnome.desktop.input-sources sources "[('xkb', 'en'), ('xkb', 'ru')]"
     gnome_set org.gnome.desktop.interface color-scheme 'prefer-dark'
     gnome_set org.gnome.desktop.interface show-battery-percentage true
     gnome_set org.gnome.mutter dynamic-workspaces false
     gnome_set org.gnome.desktop.wm.preferences num-workspaces 5
+
+    gnome_reset org.gnome.desktop.wm.keybindings switch-to-application-1
+    gnome_reset org.gnome.desktop.wm.keybindings switch-to-application-2
+    gnome_reset org.gnome.desktop.wm.keybindings switch-to-application-3
+    gnome_reset org.gnome.desktop.wm.keybindings switch-to-application-4
+    gnome_reset org.gnome.desktop.wm.keybindings switch-to-application-5
     gnome_set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>1']"
     gnome_set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Super>2']"
     gnome_set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Super>3']"
@@ -158,4 +165,5 @@ flatpak install -y flathub \
 sudo systemctl disable NetworkManager-wait-online.service
 
 # TODO: yubikey setup
-# TODO: gnome-tweaks (ctrl-space for search, super+N for workspace switching)
+# TODO: gnome settings (ctrl-space for search, super+N for workspace switching)
+# TODO: firefox plugins
