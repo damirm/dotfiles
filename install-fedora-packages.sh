@@ -1,18 +1,5 @@
 #!/usr/bin/env bash
 
-function gnome_set {
-    local schema="$1"
-    local key="$2"
-    local value="$3"
-    gsettings set "$schema" "$key" "$value"
-}
-
-function gnome_reset {
-    local schema="$1"
-    local key="$2"
-    gsettings reset "$schema" "$key"
-}
-
 function install_nerd_font {
     local font_name="$1"
     local remote_file="$2"
@@ -49,6 +36,7 @@ function install_gnome_extension {
 
     wget -P $tmp_dir $remote_file
     mkdir -p $dst_dir
+    # TODO: Move to temporary dir first, then extract uuid, and then move to extensions dir.
     unzip -o $tmp_dir/$zip_file -d $dst_dir
     gnome-extensions enable $extension_id
     rm $tmp_dir/$zip_file
@@ -116,31 +104,33 @@ if command -v gsettings &>/dev/null; then
 
     install_gnome_extension "appindicatorsupport@rgcjonas.gmail.com" "https://github.com/ubuntu/gnome-shell-extension-appindicator/releases/download/v60/appindicatorsupport@rgcjonas.gmail.com.zip"
     install_gnome_extension "Vitals@CoreCoding.com" "https://github.com/corecoding/Vitals/releases/download/v72.0.0/vitals.zip"
+    # install_gnome_extension "space-bar@luchrioh" "https://github.com/christopher-l/space-bar/releases/download/v33/space-bar@luchrioh.shell-extension.zip"
 
     echo "Installing gnome settings..."
-    gnome_set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier', 'grp:alt_space_toggle']"
-    gnome_set org.gnome.desktop.input-sources sources "[('xkb', 'en'), ('xkb', 'ru')]"
-    gnome_set org.gnome.desktop.interface color-scheme 'prefer-dark'
-    gnome_set org.gnome.desktop.interface show-battery-percentage true
-    gnome_set org.gnome.mutter dynamic-workspaces false
-    gnome_set org.gnome.desktop.wm.preferences num-workspaces 5
+    gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier', 'grp:alt_space_toggle']"
+    gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'en'), ('xkb', 'ru')]"
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.interface show-battery-percentage true
+    gsettings set org.gnome.mutter dynamic-workspaces false
+    gsettings set org.gnome.desktop.wm.preferences num-workspaces 5
 
-    gnome_reset org.gnome.desktop.wm.keybindings switch-to-application-1
-    gnome_reset org.gnome.desktop.wm.keybindings switch-to-application-2
-    gnome_reset org.gnome.desktop.wm.keybindings switch-to-application-3
-    gnome_reset org.gnome.desktop.wm.keybindings switch-to-application-4
-    gnome_reset org.gnome.desktop.wm.keybindings switch-to-application-5
-    gnome_set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>1']"
-    gnome_set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Super>2']"
-    gnome_set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Super>3']"
-    gnome_set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4']"
-    gnome_set org.gnome.desktop.wm.keybindings switch-to-workspace-5 "['<Super>5']"
-    gnome_set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Shift><Super>1']"
-    gnome_set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Shift><Super>2']"
-    gnome_set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Shift><Super>3']"
-    gnome_set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Shift><Super>4']"
-    gnome_set org.gnome.desktop.wm.keybindings move-to-workspace-5 "['<Shift><Super>5']"
-    gnome_set org.gnome.shell.keybindings toggle-application-view "['<Control>Space']"
+    gsettings reset org.gnome.desktop.wm.keybindings switch-to-application-1
+    gsettings reset org.gnome.desktop.wm.keybindings switch-to-application-2
+    gsettings reset org.gnome.desktop.wm.keybindings switch-to-application-3
+    gsettings reset org.gnome.desktop.wm.keybindings switch-to-application-4
+    gsettings reset org.gnome.desktop.wm.keybindings switch-to-application-5
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>1']"
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Super>2']"
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Super>3']"
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4']"
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-5 "['<Super>5']"
+    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Shift><Super>1']"
+    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Shift><Super>2']"
+    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Shift><Super>3']"
+    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Shift><Super>4']"
+    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-5 "['<Shift><Super>5']"
+    gsettings set org.gnome.shell.keybindings toggle-application-view "['<Control>Space']"
+    gsettings set org.gnome.desktop.interface enable-animations false
 fi
 
 echo "Installing flatpak packages..."
@@ -156,10 +146,6 @@ flatpak install -y flathub \
     com.transmissionbt.Transmission \
     com.jetbrains.IntelliJ-IDEA-Community \
     com.visualstudio.code
-
-# eu.betterbird.Betterbird
-# org.gnome.Extensions
-# org.mozilla.firefox
 
 # Misc settings.
 sudo systemctl disable NetworkManager-wait-online.service
