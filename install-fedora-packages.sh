@@ -156,7 +156,8 @@ if command -v gsettings &>/dev/null; then
         "Alacritty.desktop"
         "org.mozilla.firefox.desktop"
         "org.telegram.desktop.desktop"
-        "org.mozilla.Thunderbird.desktop"
+        "eu.betterbird.Betterbird.desktop"
+        # "org.mozilla.Thunderbird.desktop"
         "org.gnome.Nautilus.desktop"
         "org.gnome.Settings.desktop"
         "com.jetbrains.IntelliJ-IDEA-Community.desktop"
@@ -192,7 +193,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 flatpak install -y flathub \
     com.mattjakeman.ExtensionManager \
-    org.mozilla.Thunderbird \
+    eu.betterbird.Betterbird \
     org.videolan.VLC \
     org.telegram.desktop \
     com.visualstudio.code \
@@ -200,6 +201,8 @@ flatpak install -y flathub \
     com.transmissionbt.Transmission \
     com.jetbrains.IntelliJ-IDEA-Community \
     com.visualstudio.code
+
+# org.mozilla.Thunderbird
 
 # Misc settings.
 sudo systemctl disable NetworkManager-wait-online.service
@@ -219,6 +222,9 @@ if ! command -v ciadpi &>/dev/null; then
     systemctl --user enable byedpi.service
     systemctl --user start byedpi.service
 fi
+
+mkdir -p ~/.config/autostart/
+ln -f -s $(pwd)/fedora/home/.config/autostart/ulauncher.desktop "$HOME/.config/autostart/ulauncher.desktop"
 
 # TODO: Firefox plugins
 # TODO: Ulauncher settings
