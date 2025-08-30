@@ -1,0 +1,19 @@
+[Unit]
+Description=ByeDPI
+Documentation=https://github.com/hufrea/byedpi
+Wants=network-online.target
+After=network-online.target nss-lookup.target
+
+[Service]
+NoNewPrivileges=yes
+StandardOutput=null
+StandardError=journal
+EnvironmentFile=-/etc/byedpi.conf
+EnvironmentFile=-%h/.config/byedpi.conf
+ExecStart=%h/.local/bin/ciadpi --ip 127.0.0.1 --port 1080 --oob 1 --disorder 1 --auto=torst --tlsrec 1+s
+TimeoutStopSec=5s
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=default.target
