@@ -22,24 +22,7 @@ function install_nerd_font {
 
 echo "Setup dnf..."
 sudo dnf config-manager setopt fastestmirror=true
-sudo dnf config-manager setopt max_parallel_downloads=10
-
-if ! dnf repolist | grep -q rpmfusion; then
-    echo "Enabling rpm fusion and terra..."
-    sudo dnf install -y \
-        https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-        https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-    sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
-    sudo dnf update -y --skip-unavailable
-    # TODO: Do we need to update @core if we updated all above?
-    sudo dnf update -y @core
-fi
-
-# echo "Updating firmware..."
-# sudo fwupdmgr refresh --force
-# sudo fwupdmgr get-devices
-# sudo fwupdmgr get-updates
-# sudo fwupdmgr update -y
+sudo dnf config-manager setopt max_parallel_downloads=20
 
 echo "Enable dnf repositories..."
 sudo dnf copr enable -y jdxcode/mise
@@ -49,6 +32,25 @@ sudo dnf copr enable -y dejan/lazygit
 sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
 sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
 sudo dnf check-update
+
+if ! dnf repolist | grep -q rpmfusion; then
+    echo "Enabling rpm fusion and terra..."
+    sudo dnf install -y \
+        https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+        https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+    sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+
+    sudo cp -f fedora/etc/yum.repos.d/yandex-mirror.repo /etc/yum.repos.d/yandex-mirror.repo
+    # sudo ln -s $(pwd)/fedora/etc/yum.repos.d/yandex-mirror.repo /etc/yum.repos.d/yandex-mirror.repo
+fi
+
+sudo dnf update -y --skip-unavailable
+
+# echo "Updating firmware..."
+# sudo fwupdmgr refresh --force
+# sudo fwupdmgr get-devices
+# sudo fwupdmgr get-updates
+# sudo fwupdmgr update -y
 
 echo "Installing packages..."
 sudo dnf install -y \
@@ -64,7 +66,6 @@ sudo dnf install -y \
     lazygit \
     fzf \
     zoxide \
-    xclip \
     fastfetch \
     gnome-tweaks \
     alacritty \
@@ -78,7 +79,9 @@ sudo dnf install -y \
     bat \
     eza \
     tldr \
-    ulauncher
+    ulauncher \
+    pam-u2f \
+    pamu2fcfg
 
 install_nerd_font "JetBrainsMono" "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip"
 
@@ -120,7 +123,6 @@ if command -v gsettings &>/dev/null; then
     gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Shift><Super>4']"
     gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-5 "['<Shift><Super>5']"
     gsettings reset org.gnome.shell.keybindings toggle-application-view
-    # gsettings set org.gnome.shell.keybindings toggle-application-view "['<Control>Space']"
     gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>q']"
     gsettings set org.gnome.desktop.wm.keybindings maximize "['<Super>Up']"
 
@@ -142,6 +144,14 @@ if command -v gsettings &>/dev/null; then
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Control>space'
 fi
 
+# Setup yubikey
+if [ ! -f ~/.config/Yubico/u2f_keys ]; then
+    mkdir -p ~/.config/Yubico
+    echo "Touch yubikey: "
+    pamu2fcfg >~/.config/Yubico/u2f_keys
+    # TODO: configure /etc/pam.d/sudo, /etc/pam.d/gdm-password
+fi
+
 echo "Installing flatpak packages..."
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
@@ -156,9 +166,32 @@ flatpak install -y flathub \
     com.jetbrains.IntelliJ-IDEA-Community \
     com.visualstudio.code
 
+# Setup dash-to-dock
+dash_to_dock_apps=(
+    "Alacritty.desktop"
+    "org.mozilla.firefox.desktop"
+    "org.telegram.desktop.desktop"
+    "org.mozilla.Thunderbird.desktop"
+    "org.gnome.Nautilus.desktop"
+    "org.gnome.Settings.desktop"
+    "com.jetbrains.IntelliJ-IDEA-Community.desktop"
+    "md.obsidian.Obsidian.desktop"
+    "1password.desktop"
+    "com.transmissionbt.Transmission.desktop"
+    "com.visualstudio.code.desktop"
+    "org.gnome.Boxes.desktop"
+    "org.gnome.Software.desktop"
+    "org.gnome.SystemMonitor.desktop"
+)
+
+favorites_list=$(printf "'%s'," "${dash_to_dock_apps[@]}")
+favorites_list="[${favorites_list%,}]"
+
+# Set the favorite apps
+gsettings set org.gnome.shell favorite-apps "$favorites_list"
+
 # Misc settings.
 sudo systemctl disable NetworkManager-wait-online.service
 
-# TODO: yubikey setup
-# TODO: gnome settings (ctrl-space for search, super+N for workspace switching)
-# TODO: firefox plugins
+# TODO: Firefox plugins
+# TODO: Ulauncher settings
