@@ -87,6 +87,10 @@ install_nerd_font "JetBrainsMono" "https://github.com/ryanoasis/nerd-fonts/relea
 
 # Gnome setup.
 if command -v gsettings &>/dev/null; then
+    echo "Installing cursor theme..."
+    sudo dnf copr enable -y muhalantabli/copr-repo
+    sudo dnf install -y bibata-cursor-theme
+
     echo "Installing gnome shell extensions"
     sudo dnf install -y \
         gnome-shell-extension-dash-to-dock
@@ -131,6 +135,7 @@ if command -v gsettings &>/dev/null; then
     gsettings set org.gnome.desktop.interface enable-animations false
     gsettings set org.gnome.desktop.interface clock-format '24h'
     gsettings set org.gnome.desktop.interface clock-show-date true
+    gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'
     gsettings set org.gnome.desktop.calendar show-weekdate true
     gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
     gsettings set org.gnome.mutter center-new-windows true
@@ -142,6 +147,31 @@ if command -v gsettings &>/dev/null; then
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'ulauncher-toggle'
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'ulauncher-toggle'
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Control>space'
+
+    # Setup dash-to-dock
+    dash_to_dock_apps=(
+        "Alacritty.desktop"
+        "org.mozilla.firefox.desktop"
+        "org.telegram.desktop.desktop"
+        "org.mozilla.Thunderbird.desktop"
+        "org.gnome.Nautilus.desktop"
+        "org.gnome.Settings.desktop"
+        "com.jetbrains.IntelliJ-IDEA-Community.desktop"
+        "md.obsidian.Obsidian.desktop"
+        "1password.desktop"
+        "com.transmissionbt.Transmission.desktop"
+        "com.visualstudio.code.desktop"
+        "org.gnome.Boxes.desktop"
+        "org.gnome.Software.desktop"
+        "org.gnome.SystemMonitor.desktop"
+    )
+
+    favorites_list=$(printf "'%s'," "${dash_to_dock_apps[@]}")
+    favorites_list="[${favorites_list%,}]"
+
+    # Set the favorite apps
+    gsettings set org.gnome.shell favorite-apps "$favorites_list"
+    gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'LEFT'
 fi
 
 # Setup yubikey
@@ -165,30 +195,6 @@ flatpak install -y flathub \
     com.transmissionbt.Transmission \
     com.jetbrains.IntelliJ-IDEA-Community \
     com.visualstudio.code
-
-# Setup dash-to-dock
-dash_to_dock_apps=(
-    "Alacritty.desktop"
-    "org.mozilla.firefox.desktop"
-    "org.telegram.desktop.desktop"
-    "org.mozilla.Thunderbird.desktop"
-    "org.gnome.Nautilus.desktop"
-    "org.gnome.Settings.desktop"
-    "com.jetbrains.IntelliJ-IDEA-Community.desktop"
-    "md.obsidian.Obsidian.desktop"
-    "1password.desktop"
-    "com.transmissionbt.Transmission.desktop"
-    "com.visualstudio.code.desktop"
-    "org.gnome.Boxes.desktop"
-    "org.gnome.Software.desktop"
-    "org.gnome.SystemMonitor.desktop"
-)
-
-favorites_list=$(printf "'%s'," "${dash_to_dock_apps[@]}")
-favorites_list="[${favorites_list%,}]"
-
-# Set the favorite apps
-gsettings set org.gnome.shell favorite-apps "$favorites_list"
 
 # Misc settings.
 sudo systemctl disable NetworkManager-wait-online.service
