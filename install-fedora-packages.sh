@@ -185,7 +185,6 @@ if ! lsusb | grep -i yubikey; then
         mkdir -p ~/.config/Yubico
         echo "Touch yubikey: "
         pamu2fcfg >~/.config/Yubico/u2f_keys
-        # TODO: Should I explicitly create /etc/pam.d/u2f-{sufficient,required} files?
         sudo authselect select local
         sudo authselect enable-feature with-pam-u2f
         sudo authselect apply-changes
