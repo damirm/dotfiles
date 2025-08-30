@@ -71,6 +71,7 @@ sudo dnf install -y \
     alacritty \
     jetbrains-mono-nl-fonts \
     1password \
+    1password-cli \
     htop \
     btop \
     pipx \
@@ -184,7 +185,10 @@ if ! lsusb | grep -i yubikey; then
         mkdir -p ~/.config/Yubico
         echo "Touch yubikey: "
         pamu2fcfg >~/.config/Yubico/u2f_keys
-        # TODO: configure /etc/pam.d/sudo, /etc/pam.d/gdm-password
+        # TODO: Should I explicitly create /etc/pam.d/u2f-{sufficient,required} files?
+        sudo authselect select local
+        sudo authselect enable-feature with-pam-u2f
+        sudo authselect apply-changes
     fi
 fi
 
