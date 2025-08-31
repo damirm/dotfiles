@@ -29,9 +29,11 @@ sudo dnf copr enable -y jdxcode/mise
 sudo dnf copr enable -y atim/starship
 sudo dnf copr enable -y dejan/lazygit
 
-sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
-sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
-sudo dnf check-update
+if ! dnf repolist | grep -q 1password; then
+    sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
+    sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
+    sudo dnf check-update
+fi
 
 if ! dnf repolist | grep -q rpmfusion; then
     echo "Enabling rpm fusion and terra..."
@@ -40,8 +42,8 @@ if ! dnf repolist | grep -q rpmfusion; then
         https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
     sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 
-    sudo cp -f fedora/etc/yum.repos.d/yandex-mirror.repo /etc/yum.repos.d/yandex-mirror.repo
-    # sudo ln -s $(pwd)/fedora/etc/yum.repos.d/yandex-mirror.repo /etc/yum.repos.d/yandex-mirror.repo
+    # sudo cp -f fedora/etc/yum.repos.d/yandex-mirror.repo /etc/yum.repos.d/yandex-mirror.repo
+    sudo ln -s $(pwd)/fedora/etc/yum.repos.d/yandex-mirror.repo /etc/yum.repos.d/yandex-mirror.repo
 fi
 
 sudo dnf update -y --skip-unavailable
@@ -180,7 +182,7 @@ if command -v gsettings &>/dev/null; then
 fi
 
 # Setup yubikey
-if ! lsusb | grep -i yubikey; then
+if lsusb | grep -i yubikey; then
     if [ ! -f ~/.config/Yubico/u2f_keys ]; then
         mkdir -p ~/.config/Yubico
         echo "Touch yubikey: "
@@ -217,6 +219,7 @@ if ! command -v ciadpi &>/dev/null; then
     file_name=$(basename "$remote_zip")
     wget -P "$tmp_dir" "$remote_zip"
     tar zxvf "$tmp_dir/$file_name" -C "$tmp_dir"
+    mkdir -p "$HOME/.local/bin"
     mv "$tmp_dir/ciadpi-x86_64" "$HOME/.local/bin/ciadpi"
     user_systemd_dir="$HOME/.config/systemd/user"
     mkdir -p "$user_systemd_dir"
