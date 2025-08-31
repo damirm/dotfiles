@@ -52,6 +52,7 @@ brew "fx"
 brew "fd"
 brew "micronaut"
 brew "zoxide"
+brew "x-cmd"
 
 # TODO: Should we try something like fish?
 brew "zsh"

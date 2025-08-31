@@ -80,7 +80,6 @@ sudo dnf install -y \
     gum \
     fd-find \
     bat \
-    eza \
     tldr \
     ulauncher \
     pam-u2f \
@@ -88,6 +87,8 @@ sudo dnf install -y \
     tor \
     torsocks \
     telnet
+
+# TODO: Install eza, x-cmd
 
 install_nerd_font "JetBrainsMono" "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip"
 
