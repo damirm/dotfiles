@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 
 if command -v brew &>/dev/null; then
-    ./install-macos-packages.sh
+    echo "Installing brew packages..."
+    BREWFILE="$HOME/.config/homebrew/Brewfile"
+    brew bundle check -v --file $BREWFILE || brew bundle install --file $BREWFILE
 fi
 
 if command -v dnf &>/dev/null; then
     ./install-fedora-packages.sh
 fi
 
-./install-configs.sh
+echo "Creating symlinks..."
+stow -t $HOME alacritty tmux nvim zsh brew starship kitty sesh mise git
+
 ./install-packages.sh
