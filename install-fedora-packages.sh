@@ -88,7 +88,8 @@ sudo dnf install -y \
     pamu2fcfg \
     tor \
     torsocks \
-    telnet
+    telnet \
+    zsh-autosuggestions
 
 # TODO: Install eza, x-cmd
 
