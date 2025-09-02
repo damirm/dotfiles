@@ -26,7 +26,7 @@ return {
 
 		formatters = {
 			shfmt = {
-				append_args = { "-i", "4" },
+				append_args = { "-i", "2", "-sr" },
 			},
 		},
 
