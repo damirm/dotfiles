@@ -3,33 +3,19 @@
 eval "$(starship init zsh)"
 
 export TERM=xterm-256color
-export ZSH=$HOME/.oh-my-zsh
 export UPDATE_ZSH_DAYS=1
+export ZSH=$HOME/.oh-my-zsh
 
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# =======================================
-# zpug section
-# =======================================
-
-export ZPLUG_HOME=/usr/local/opt/zplug
-
-[ -f "$ZPLUG_HOME/init.zsh" ] && . $ZPLUG_HOME/init.zsh
-
-# =======================================
-# /zpug section
-# =======================================
-
 plugins=(git zsh-navigation-tools colored-man-pages themes zsh-autosuggestions zsh-interactive-cd)
 
-export PATH="/usr/local/sbin:$PATH:$HOME/bin":"$HOME/go/bin:$HOME/.pub-cache/bin"
+export PATH="/usr/local/sbin:$PATH:$HOME/bin":"$HOME/go/bin:$HOME/.pub-cache/bin:$HOME/.local/bin"
 
 [ -f "$ZSH/oh-my-zsh.sh" ] && . $ZSH/oh-my-zsh.sh
 
 export HOMEBREW_EDITOR=nvim
-
-export GOPATH=/Users/yesworld/go
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -51,19 +37,16 @@ if type brew &>/dev/null; then
 fi
 
 # The next line updates PATH for Yandex Cloud CLI.
-if [ -f '/Users/yesworld/yandex-cloud/path.bash.inc' ]; then source '/Users/yesworld/yandex-cloud/path.bash.inc'; fi
+if [ -f "$HOME/yandex-cloud/path.bash.inc" ]; then source "$HOME/yandex-cloud/path.bash.inc"; fi
 
 # The next line enables shell command completion for yc.
-if [ -f '/Users/yesworld/yandex-cloud/completion.zsh.inc' ]; then source '/Users/yesworld/yandex-cloud/completion.zsh.inc'; fi
+if [ -f "$HOME/yandex-cloud/completion.zsh.inc" ]; then source "$HOME/yandex-cloud/completion.zsh.inc"; fi
 
 # The next line updates PATH for Yandex Cloud Private CLI.
-if [ -f '/Users/yesworld/ycp/path.bash.inc' ]; then source '/Users/yesworld/ycp/path.bash.inc'; fi
+if [ -f "$HOME/ycp/path.bash.inc" ]; then source "$HOME/ycp/path.bash.inc"; fi
 
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
-
-# Created by `pipx` on 2022-10-14 11:29:19
-export PATH="$PATH:/Users/yesworld/.local/bin"
 
 export DOCKER_CONFIG="$HOME/.docker"
 export HELM_REGISTRY_CONFIG="$DOCKER_CONFIG/config.json"
