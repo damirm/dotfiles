@@ -5,19 +5,23 @@ startup_command = "nvim"
 
 [[session]]
 name = "work"
+startup_command = "tmux select-window -t cloud-java; exit"
 windows = ["cloud-java", "cloud-go", "bootstrap-templates", "salt-formula"]
 
 [[session]]
 name = "junk"
 path = "~/tmp"
 
-[[window]]
-name = "cloud-go"
-path = "~/cloudia/cloud/cloud-go"
 
 [[window]]
 name = "cloud-java"
 path = "~/cloudia/cloud/cloud-java"
+startup_script = "tmux split-window -v -t cloud-java"
+
+[[window]]
+name = "cloud-go"
+path = "~/cloudia/cloud/cloud-go"
+startup_script = "tmux split-window -v -t cloud-go"
 
 [[window]]
 name = "bootstrap-templates"
