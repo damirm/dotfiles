@@ -16,12 +16,12 @@ path = "~/tmp"
 [[window]]
 name = "cloud-java"
 path = "~/cloudia/cloud/cloud-java"
-startup_script = "tmux split-window -v -t cloud-java"
+startup_script = "tmux split-window -v -t cloud-java -p 30"
 
 [[window]]
 name = "cloud-go"
 path = "~/cloudia/cloud/cloud-go"
-startup_script = "tmux split-window -v -t cloud-go"
+startup_script = "tmux split-window -v -t cloud-go -p 30"
 
 [[window]]
 name = "bootstrap-templates"
