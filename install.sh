@@ -14,6 +14,6 @@ if command -v dnf &> /dev/null; then
 fi
 
 echo "Creating symlinks..."
-stow -t $HOME alacritty tmux nvim zsh brew starship kitty sesh mise git terraform
+stow -t $HOME alacritty tmux nvim zsh brew starship kitty sesh mise git terraform scripts
 
 ./install-packages.sh

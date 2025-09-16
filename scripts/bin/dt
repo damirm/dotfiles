@@ -1,0 +1,11 @@
+#!/bin/bash
+
+API_ENDPOINT=https://st-api.yandex-team.ru/v3
+QUERY='{"query": "Queue: CLOUDDUTY Components: \"VPC Config plane\" AND Status: !Closed"}'
+
+curl -s \
+    -H "Authorization: OAuth $STARTREK_OAUTH_TOKEN" \
+    -H "Content-Type: application/json" \
+    -XPOST \
+    -d "$QUERY" "$API_ENDPOINT/issues/_search" | \
+    jq -r 'first | .key'

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -ex
+
+CLOUDIA_DIR="$HOME/cloudia"
+
+arc unmount "$CLOUDIA_DIR"
