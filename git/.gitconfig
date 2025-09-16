@@ -4,7 +4,10 @@
 	username = damirm
 
 [core]
-editor = /usr/bin/nvim
+    editor = /usr/bin/nvim
 
 [color]
-ui = auto
+    ui = auto
+
+[init]
+    defaultBranch = main

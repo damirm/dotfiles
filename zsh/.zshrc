@@ -11,17 +11,9 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(git zsh-navigation-tools colored-man-pages themes zsh-autosuggestions zsh-interactive-cd)
 
-export PATH="/usr/local/sbin:$PATH:$HOME/bin":"$HOME/go/bin:$HOME/.pub-cache/bin:$HOME/.local/bin"
+export PATH="/usr/local/sbin:$PATH:$HOME/bin:$HOME/.local/bin"
 
 [ -f "$ZSH/oh-my-zsh.sh" ] && . $ZSH/oh-my-zsh.sh
-
-export HOMEBREW_EDITOR=nvim
-
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 [ -f ~/.shell/.tokens ] && . ~/.shell/.tokens
 [ -f ~/.shell/.aliases ] && . ~/.shell/.aliases
@@ -30,6 +22,8 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 [ -f ~/.zshrc.private ] && . ~/.zshrc.private
 
 if type brew &>/dev/null; then
+  export HOMEBREW_EDITOR=nvim
+
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
   autoload -Uz compinit
@@ -47,11 +41,5 @@ if [ -f "$HOME/ycp/path.bash.inc" ]; then source "$HOME/ycp/path.bash.inc"; fi
 
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
-
-export DOCKER_CONFIG="$HOME/.docker"
-export HELM_REGISTRY_CONFIG="$DOCKER_CONFIG/config.json"
-
-export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
-export DOCKER_HOST=$(colima -p rosetta status -j | jq -r .docker_socket)
-
 eval "$(mise activate zsh)"
+

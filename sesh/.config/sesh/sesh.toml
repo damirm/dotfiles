@@ -1,7 +1,12 @@
 [[session]]
 name = "dotfiles"
 path = "~/dotfiles"
-startup_command = "nvim"
+startup_command = "tmux select-window -t dotfiles; nvim"
+windows = ["dotfiles", "homelab"]
+
+[[session]]
+name = "homelab"
+startup_command = "ssh homelab"
 
 [[session]]
 name = "work"
@@ -11,7 +16,6 @@ windows = ["cloud-java", "cloud-go", "bootstrap-templates", "salt-formula"]
 [[session]]
 name = "junk"
 path = "~/tmp"
-
 
 [[window]]
 name = "cloud-java"
@@ -30,3 +34,13 @@ path = "~/cloudia/cloud/deploy/bootstrap/templates"
 [[window]]
 name = "salt-formula"
 path = "~/cloudia/cloud/deploy/salt-formula"
+
+[[window]]
+name = "homelab"
+path = "~/dotfiles"
+startup_script = "tmux split-window -v -t dotfiles -p 30; nvim"
+
+[[window]]
+name = "homelab"
+path = "~/dev/github.com/damirm/homelab"
+startup_script = "tmux split-window -v -t homelab -p 30; nvim"
