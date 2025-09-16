@@ -60,14 +60,8 @@ brew "zsh"
 brew "zsh-autosuggestions"
 brew "zplug"
 
-# Just update to newer version.
 brew "bash"
-
-# TODO: Try ohmyposh?
 brew "starship"
-
-# TODO: Migrate to something else (e.g. mise).
-brew "asdf"
 brew "mise"
 
 # Casks"
@@ -101,6 +95,7 @@ cask "beekeeper-studio"
 cask "ghostty"
 cask "wezterm"
 cask "vlc"
+cask "macfuse"
 
 # Tiling window manager
 cask "amethyst"

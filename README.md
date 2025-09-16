@@ -13,3 +13,5 @@
     - [ ] firefox policy.json
     - [ ] firefox custom shortcuts
     - [ ] different nvim colorscheme in tmux (tmux is actually good, but without tmux is bad)
+- common
+    - [ ] move things to scripts/setup-{brew,dnf,flatpak,gnome,macos,fonts,yubikey}.sh
