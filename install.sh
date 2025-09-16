@@ -9,7 +9,7 @@ if command -v dnf &> /dev/null; then
 fi
 
 echo "Creating symlinks..."
-stow -t $HOME alacritty tmux nvim zsh brew starship kitty sesh mise git terraform scripts
+stow -t $HOME alacritty tmux nvim zsh brew starship kitty sesh mise git terraform scripts ssh
 
 if command -v brew &> /dev/null; then
   echo "Installing brew packages..."
