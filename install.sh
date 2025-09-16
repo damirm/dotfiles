@@ -17,4 +17,6 @@ if command -v brew &> /dev/null; then
   brew bundle check -v --file $BREWFILE || brew bundle install --file $BREWFILE
 fi
 
+[[ $OSTYPE == 'darwin'* ]] && ./setup/macos.sh
+
 ./install-packages.sh
