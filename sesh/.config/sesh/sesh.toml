@@ -1,7 +1,7 @@
 [[session]]
 name = "dotfiles"
 path = "~/dotfiles"
-startup_command = "tmux select-window -t dotfiles; nvim"
+startup_command = "tmux select-window -t dotfiles; exit"
 windows = ["dotfiles", "homelab"]
 
 [[session]]
