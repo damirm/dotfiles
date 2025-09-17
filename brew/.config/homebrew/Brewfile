@@ -1,6 +1,6 @@
 # cask_args appdir: "~/Applications", require_sha: true
 
-# TODO: Install v2box, wireguard, outline, canary mail, zed editor, zen browser, amneziavpn, meeter
+# TODO: Install v2box, wireguard, outline, canary mail, amneziavpn, meeter
 
 brew "neovim"
 brew "ncdu"
@@ -112,7 +112,8 @@ cask "cursor"
 # cask "yandex-disk"
 # cask "whatsapp"
 # cask "zoom"
-#
+# cask "megasync"
+
 cask "kitty"
 cask "ledger-live"
 cask "trae"
@@ -131,4 +132,3 @@ cask "logseq"
 cask "steam"
 cask "stats"
 cask "spotify"
-cask "megasync"
