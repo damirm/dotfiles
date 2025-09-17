@@ -1,4 +1,4 @@
-[ -f ~/.shell/.locale ] && . ~/.shell/.locale
+[ -d "$HOME/.shell" ] && for file in $(ls -a "$HOME/.shell"); do source "$HOME/.shell/$file"; done
 
 eval "$(starship init zsh)"
 
@@ -15,10 +15,6 @@ export PATH="/usr/local/sbin:$PATH:$HOME/bin:$HOME/.local/bin"
 
 [ -f "$ZSH/oh-my-zsh.sh" ] && . $ZSH/oh-my-zsh.sh
 
-[ -f ~/.shell/.tokens ] && . ~/.shell/.tokens
-[ -f ~/.shell/.aliases ] && . ~/.shell/.aliases
-[ -f ~/.shell/.functions ] && . ~/.shell/.functions
-[ -f ~/.shell/.python ] && . ~/.shell/.python
 [ -f ~/.zshrc.private ] && . ~/.zshrc.private
 
 if type brew &>/dev/null; then
