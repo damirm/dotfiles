@@ -5,6 +5,7 @@
 
 [core]
     editor = /usr/bin/nvim
+    excludesfile = ~/.gitignore
 
 [color]
     ui = auto
