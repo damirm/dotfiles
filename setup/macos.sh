@@ -3,8 +3,8 @@
 # TODO:
 # - Remap caps_lock to left_control
 
-xcode-select --install
-sudo xcodebuild -license accept
+# xcode-select --install
+# sudo xcodebuild -license accept
 
 defaults write .GlobalPreferences AppleInterfaceStyle -string "Dark"
 
@@ -14,8 +14,8 @@ defaults write com.apple.dock "autohide" -bool "true"
 defaults write com.apple.dock "autohide-time-modifier" -float "0.5"
 defaults write com.apple.dock "autohide-delay" -float "0"
 
-defaults write com.apple.Safari "ShowFullURLInSmartSearchField" -bool "true"
-defaults write com.apple.Safari "IncludeInternalDebugMenu" -bool true
+# defaults write com.apple.Safari "ShowFullURLInSmartSearchField" -bool "true"
+# defaults write com.apple.Safari "IncludeInternalDebugMenu" -bool true
 defaults write NSGlobalDomain "WebKitDeveloperExtras" -bool true
 
 defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"

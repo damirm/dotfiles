@@ -12,19 +12,17 @@ if command -v dnf &> /dev/null; then
   ./setup/fedora.sh
 fi
 
-if command -v gsettings &> /dev/null; then
+if command -v gnome-shell &> /dev/null; then
   echo "Configuring gnome..."
   ./setup/gnome.sh
+
+  echo "Configuring fonts..."
+  ./setup/fonts.sh
 fi
 
 if command -v flatpak &> /dev/null; then
   echo "Configuring flatpak..."
   ./setup/flatpak.sh
-fi
-
-if command -v fc-cache &> /dev/null; then
-  echo "Configuring fonts..."
-  ./setup/fonts.sh
 fi
 
 if command -v lsusb &> /dev/null; then
