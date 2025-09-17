@@ -9,8 +9,13 @@
     - [ ] different font size for macbook and thinkpad (14 vs 16)
     - [ ] firefox policy.json
     - [ ] firefox custom shortcuts
+- macbook
+    - [ ] Do something with ~/.shell folder
+    - [ ] Migrate ~/.gitconfig to symlink
+    - [ ] Migrate ssh configs to symlinks
+    - [ ] Migrate ~/bin to symlink
 - all
     - [ ] alacritty terminal shell program does not work (env.shell works, but it's bad practice)
     - [ ] different nvim colorscheme in tmux (tmux is actually good, but without tmux is bad)
 - common
-    - [ ] move things to scripts/setup-{brew,dnf,flatpak,gnome,macos,fonts,yubikey}.sh
+    - [x] move things to scripts/setup-{brew,dnf,flatpak,gnome,macos,fonts,yubikey}.sh
