@@ -1,0 +1,16 @@
+export PYTHONDONTWRITEBYTECODE=1
+export VIRTUAL_ENVS=$HOME/.virtualenvs
+
+pyenv() {
+    python_version="$1"
+    project="$(basename $(pwd))"
+    if [ ! -d "$VIRTUAL_ENVS"/"$project" ]; then
+        $(asdf where python "$python_version")/bin/python -m venv "$VIRTUAL_ENVS"/"$project"
+    fi
+    source "${VIRTUAL_ENVS}/${project}/bin/activate"
+}
+
+pipx_inject_requirements () {
+    project="$(basename $(pwd))"
+    pipx runpip $project install -r $1
+}
