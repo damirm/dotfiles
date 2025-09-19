@@ -23,4 +23,5 @@
     - copy ssh keys
     - copy zsh_history
     - raycast can't be installed
-    - setup yubikey, yc, ycp, arc, skotty
+    - setup yubikey, yc, ycp, arc, skotty, pssh, cloud-java maven / gradle
+    - install meeter, canary mail, proxifier, v2box, terraform (via tfenv)
