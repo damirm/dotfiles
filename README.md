@@ -18,6 +18,6 @@
     - copy .zsh.private
     - copy zsh_history (or use autin)
     - setup yubikey, yc, ycp, arc, skotty, pssh, cloud-java maven / gradle
-    - install raycast, proxifier, terraform (via tfenv)
+    - install raycast, proxifier
     - what about browser tabs?
     - review ~/tmp dir

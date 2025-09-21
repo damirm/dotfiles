@@ -8,8 +8,12 @@ bun = '1.2'
 deno = '2.4'
 node = '24.6'
 gradle = '9.0.0'
+terraform = '1.13.3'
 
 [settings]
 trusted_config_paths = [
     '~/dev/github.com/damirm/'
 ]
+
+[settings.url_replacements]
+"releases.hashicorp.com" = "mirror.yandex.ru/mirrors/releases.hashicorp.com"
