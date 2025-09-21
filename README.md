@@ -20,8 +20,8 @@
 - common
     - [x] move things to scripts/setup-{brew,dnf,flatpak,gnome,macos,fonts,yubikey}.sh
 - new laptop migration
+    - raycast can't be installed
     - copy ssh keys
     - copy zsh_history
-    - raycast can't be installed
     - setup yubikey, yc, ycp, arc, skotty, pssh, cloud-java maven / gradle
     - install meeter, canary mail, proxifier, v2box, terraform (via tfenv)

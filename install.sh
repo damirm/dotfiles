@@ -30,8 +30,9 @@ if command -v lsusb &> /dev/null; then
 fi
 
 echo "Configuring dotfiles..."
-# TODO: Temporary disable scripts, ssh, git dotfiles.
-stow -t $HOME alacritty tmux nvim zsh brew starship kitty sesh mise terraform # scripts ssh git
+# TODO: Temporary disable scripts, ssh dotfiles.
+stow -v -t $HOME alacritty tmux nvim zsh brew starship kitty sesh mise terraform git # scripts ssh
+stow -v --no-folding -t $HOME ssh
 
 if command -v brew &> /dev/null; then
   echo "Configuring homebrew..."
@@ -40,4 +41,5 @@ fi
 
 [[ $OSTYPE == 'darwin'* ]] && ./setup/macos.sh
 
+./setup/ssh.sh
 ./setup/packages.sh
