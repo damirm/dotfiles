@@ -6,8 +6,10 @@
 # xcode-select --install
 # sudo xcodebuild -license accept
 
+# Enable dark theme.
 defaults write .GlobalPreferences AppleInterfaceStyle -string "Dark"
 
+# Setup dock.
 defaults write com.apple.dock "orientation" -string "left"
 defaults write com.apple.dock "tilesize" -int "36"
 defaults write com.apple.dock "autohide" -bool "true"
@@ -16,8 +18,11 @@ defaults write com.apple.dock "autohide-delay" -float "0"
 
 # defaults write com.apple.Safari "ShowFullURLInSmartSearchField" -bool "true"
 # defaults write com.apple.Safari "IncludeInternalDebugMenu" -bool true
+
+# Enable safari developer tools.
 defaults write NSGlobalDomain "WebKitDeveloperExtras" -bool true
 
+# Setup finder.
 defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
 defaults write com.apple.finder "AppleShowAllFiles" -bool "true"
 defaults write com.apple.finder "ShowPathbar" -bool "true"
@@ -26,11 +31,17 @@ defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true"
 defaults write com.apple.finder "_FXShowPosixPathInTitle" -bool true
 defaults write com.apple.finder "FXPreferredViewStyle" -string "nlsv"
 
+# Setup clock.
 defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm:ss\""
 defaults write com.apple.HIToolbox "AppleFnUsageType" -int "0"
 
 defaults write NSGlobalDomain "KeyRepeat" -int 1
 
+# Setup menu bar icons.
 defaults -currentHost write com.apple.controlcenter Bluetooth -int 18
 defaults -currentHost write com.apple.controlcenter Sound -int 18
 defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
+
+# Remove TimeMachine menu bar icon.
+# defaults delete "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.TimeMachine"
+# defaults delete "com.apple.systemuiserver" "NSStatusItem Visible com.apple.menuextra.TimeMachine"

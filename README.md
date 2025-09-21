@@ -18,6 +18,6 @@
     - copy .zsh.private
     - copy zsh_history (or use autin)
     - setup yubikey, yc, ycp, arc, skotty, pssh, cloud-java maven / gradle
-    - install raycast, meeter, canary mail, proxifier, v2box, terraform (via tfenv)
+    - install raycast, proxifier, terraform (via tfenv)
     - what about browser tabs?
     - review ~/tmp dir
