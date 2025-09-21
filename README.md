@@ -11,8 +11,8 @@
     - [ ] firefox custom shortcuts
 - macbook
     - [x] Do something with ~/.shell folder
-    - [ ] Migrate ssh configs to symlinks
-    - [ ] Migrate ~/.gitconfig to symlink
+    - [x] Migrate ssh configs to symlinks
+    - [x] Migrate ~/.gitconfig to symlink
     - [ ] Migrate ~/bin to symlink
 - all
     - [ ] alacritty terminal shell program does not work (env.shell works, but it's bad practice)
