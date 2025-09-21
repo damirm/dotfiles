@@ -22,6 +22,6 @@
 - new laptop migration
     - raycast can't be installed
     - copy ssh keys
-    - copy zsh_history
+    - copy zsh_history (or use autin?!)
     - setup yubikey, yc, ycp, arc, skotty, pssh, cloud-java maven / gradle
     - install meeter, canary mail, proxifier, v2box, terraform (via tfenv)

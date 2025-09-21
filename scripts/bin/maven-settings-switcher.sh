@@ -1,0 +1,23 @@
+#!/bin/bash
+
+MVN_SETTINGS=~/.m2/settings.xml
+MVN_SETTINGS_SECURITY=~/.m2/settings-security.xml
+BACKUP_MVN_SETTINGS="${MVN_SETTINGS}.bak"
+BACKUP_MVN_SETTINGS_SECURITY="${MVN_SETTINGS_SECURITY}.bak"
+
+if [[ -f "$BACKUP_MVN_SETTINGS" ]]; then
+    echo "Restore ${MVN_SETTINGS} file"
+    mv "$BACKUP_MVN_SETTINGS" "$MVN_SETTINGS"
+else
+    echo "Moving ${MVN_SETTINGS}"
+    mv "$MVN_SETTINGS" "$BACKUP_MVN_SETTINGS"
+fi
+
+if [[ -f "$BACKUP_MVN_SETTINGS_SECURITY" ]]; then
+    echo "Restore ${MVN_SETTINGS_SECURITY} file"
+    mv "$BACKUP_MVN_SETTINGS_SECURITY" "$MVN_SETTINGS_SECURITY"
+else
+    echo "Moving ${MVN_SETTINGS_SECURITY}"
+    mv "$MVN_SETTINGS_SECURITY" "$BACKUP_MVN_SETTINGS_SECURITY"
+fi
+

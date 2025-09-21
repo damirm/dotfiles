@@ -30,8 +30,7 @@ if command -v lsusb &> /dev/null; then
 fi
 
 echo "Configuring dotfiles..."
-# TODO: Temporary disable scripts dotfiles.
-stow -v -t $HOME alacritty tmux nvim zsh brew starship kitty sesh mise terraform git # scripts
+stow -v -t $HOME alacritty tmux nvim zsh brew starship kitty sesh mise terraform git scripts
 stow -v --no-folding -t $HOME ssh
 
 if command -v brew &> /dev/null; then
