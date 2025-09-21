@@ -76,7 +76,8 @@ sudo dnf install -y \
   zsh-autosuggestions \
   ansible \
   ncdu \
-  @virtualization
+  @virtualization \
+  kubernetes-client
 
 sudo usermod -a -G libvirt $(whoami)
 
