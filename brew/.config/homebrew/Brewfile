@@ -123,6 +123,7 @@ cask "stats"
 cask "spotify"
 cask "yandex-music"
 
+# cask "wealthfolio"
 # cask "font-hack-nerd-font"
 # cask "font-jetbrains-mono"
 # cask "ghostty"
