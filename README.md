@@ -18,6 +18,7 @@
     - copy .zsh.private
     - copy zsh_history (or use autin)
     - setup yubikey, yc, ycp, arc, skotty, pssh, cloud-java maven / gradle
+    - setup mail clients
     - install raycast, proxifier
     - what about browser tabs?
     - review ~/tmp dir
