@@ -1,0 +1,34 @@
+{
+	"editor.fontFamily": "JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
+	"editor.fontSize": 15,
+	"editor.scrollBeyondLastLine": false,
+	"codesnap.showWindowControls": false,
+	"explorer.autoReveal": "focusNoScroll",
+	"workbench.editor.wrapTabs": true,
+	"files.trimTrailingWhitespace": true,
+	"editor.insertSpaces": true,
+	"editor.detectIndentation": true,
+	"workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-auto",
+	"workbench.settings.applyToAllProfiles": ["editor.defaultFormatter"],
+	"[python]": {
+		"editor.defaultFormatter": "charliermarsh.ruff"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"quickfix.biome": "explicit",
+		"source.organizeImports.biome": "explicit"
+	},
+	"biome.requireConfiguration": false,
+	"biome.lspBin": "biome",
+	"editor.formatOnPaste": true,
+	"markdown-preview-enhanced.liveUpdate": true
+}
