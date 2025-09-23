@@ -14,11 +14,12 @@
     - [ ] different nvim colorscheme in tmux (tmux is actually good, but without tmux is bad)
 
 - new laptop migration
-    - copy ssh keys
-    - copy .zsh.private
-    - copy zsh_history (or use autin)
-    - setup yubikey, yc, ycp, arc, skotty, pssh, cloud-java maven / gradle
-    - setup mail clients
-    - install raycast, proxifier
-    - what about browser tabs?
-    - review ~/tmp dir
+    - [x] copy ssh keys
+    - [x] copy .zsh.private
+    - [x] copy zsh_history (or use autin)
+    - [x] review ~/tmp dir
+    - [ ] setup firefox (install some other extensions), tabs
+    - [ ] setup yubikey, yc, ycp, arc, skotty, pssh, cloud-java maven / gradle
+    - [ ] setup mail clients
+    - [ ] setup obsidian (plugins, repository)
+    - [ ] install raycast, proxifier, cursor
