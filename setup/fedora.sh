@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# TODO: Move that to homelab.
 # Install byedpi
 if ! command -v ciadpi &> /dev/null; then
   tmp_dir=$(mktemp -d)
