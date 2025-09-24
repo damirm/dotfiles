@@ -23,3 +23,4 @@
     - [ ] setup mail clients
     - [ ] setup obsidian (plugins, repository)
     - [ ] install raycast, proxifier, cursor
+    - [ ] review not committed changes
