@@ -1,6 +1,6 @@
 # cask_args appdir: "~/Applications", require_sha: true
 
-# TODO: Install v2box, wireguard, outline, canary mail, amneziavpn, meeter
+# TODO: Install wireguard, outline, amneziavpn
 
 brew "neovim"
 brew "ncdu"
