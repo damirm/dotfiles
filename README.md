@@ -15,5 +15,4 @@
     - [ ] check differences between mise, aqua, vfox
 
 - new laptop migration
-    - [ ] install proxifier
     - [ ] cleanup tfstate
