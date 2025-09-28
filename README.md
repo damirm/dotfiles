@@ -12,6 +12,7 @@
 - all
     - [ ] alacritty terminal shell program does not work (env.shell works, but it's bad practice)
     - [ ] different nvim colorscheme in tmux (tmux is actually good, but without tmux is bad)
+    - [ ] check differences between mise, aqua, vfox
 
 - new laptop migration
     - [ ] install proxifier
