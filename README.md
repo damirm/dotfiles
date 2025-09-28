@@ -14,13 +14,5 @@
     - [ ] different nvim colorscheme in tmux (tmux is actually good, but without tmux is bad)
 
 - new laptop migration
-    - [x] copy ssh keys
-    - [x] copy .zsh.private
-    - [x] copy zsh_history (or use autin)
-    - [x] review ~/tmp dir
-    - [ ] setup firefox (install some other extensions), tabs
-    - [ ] setup yubikey, yc, ycp, arc, skotty, pssh, cloud-java maven / gradle
-    - [ ] setup mail clients
-    - [ ] setup obsidian (plugins, repository)
-    - [ ] install raycast, proxifier, cursor
-    - [ ] review not committed changes
+    - [ ] install proxifier
+    - [ ] cleanup tfstate
