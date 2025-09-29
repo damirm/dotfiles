@@ -13,6 +13,8 @@
     - [ ] alacritty terminal shell program does not work (env.shell works, but it's bad practice)
     - [ ] different nvim colorscheme in tmux (tmux is actually good, but without tmux is bad)
     - [ ] check differences between mise, aqua, vfox
+    - [ ] zsh moar autocompletion (maybe use something better that zsh-autocomplete?)
+    - [ ] share zsh history (use atuin or something like that)
 
 - new laptop migration
     - [ ] cleanup tfstate

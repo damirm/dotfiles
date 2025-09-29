@@ -20,10 +20,10 @@ defaults write com.apple.dock "autohide-delay" -float "0"
 # defaults write com.apple.Safari "IncludeInternalDebugMenu" -bool true
 
 # Enable safari developer tools.
-defaults write NSGlobalDomain "WebKitDeveloperExtras" -bool true
+defaults write -g "WebKitDeveloperExtras" -bool true
 
 # Setup finder.
-defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
+defaults write -g "AppleShowAllExtensions" -bool "true"
 defaults write com.apple.finder "AppleShowAllFiles" -bool "true"
 defaults write com.apple.finder "ShowPathbar" -bool "true"
 defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool "false"
@@ -35,7 +35,9 @@ defaults write com.apple.finder "FXPreferredViewStyle" -string "nlsv"
 defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm:ss\""
 defaults write com.apple.HIToolbox "AppleFnUsageType" -int "0"
 
-defaults write NSGlobalDomain "KeyRepeat" -int 1
+# TODO: Why it doesn't work?
+defaults write -g KeyRepeat -int 2
+defaults write -g InitialKeyRepeat -int 15
 
 # Setup menu bar icons.
 defaults -currentHost write com.apple.controlcenter Bluetooth -int 18
