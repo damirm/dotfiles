@@ -9,7 +9,7 @@ export ZSH=$HOME/.oh-my-zsh
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git zsh-navigation-tools colored-man-pages themes zsh-autosuggestions zsh-interactive-cd)
+plugins=(git zsh-navigation-tools colored-man-pages themes zsh-autosuggestions zsh-interactive-cd zsh-syntax-highlighting)
 
 export PATH="/usr/local/sbin:$PATH:$HOME/bin:$HOME/.local/bin"
 
