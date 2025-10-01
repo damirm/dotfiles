@@ -101,6 +101,7 @@ cask "vlc"
 cask "rectangle"
 cask "visual-studio-code"
 cask "intellij-idea-ce"
+cask "orbstack"
 
 # Misc
 

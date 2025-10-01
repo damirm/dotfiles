@@ -31,7 +31,7 @@ vim.opt.redrawtime = 10000
 vim.opt.maxmempattern = 20000
 vim.opt.signcolumn = "yes" -- Always show sign column
 vim.opt.undofile = true
-vim.opt.clipboard = "unnamedplus"
+-- vim.opt.clipboard = "unnamedplus"
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "

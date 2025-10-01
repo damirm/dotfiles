@@ -24,8 +24,10 @@ plugins=(
     gradle
     kubectl
     ssh
+    # starship
     # fzf
     # mise
+    # zoxide
 )
 
 if type brew &>/dev/null; then
@@ -42,7 +44,6 @@ export PATH="/usr/local/sbin:$PATH:$HOME/bin:$HOME/.local/bin"
 [ -f "$ZSH/oh-my-zsh.sh" ] && . $ZSH/oh-my-zsh.sh
 
 [ -f ~/.zshrc.private ] && . ~/.zshrc.private
-
 
 # The next line updates PATH for Yandex Cloud CLI.
 if [ -f "$HOME/yandex-cloud/path.bash.inc" ]; then source "$HOME/yandex-cloud/path.bash.inc"; fi

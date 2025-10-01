@@ -15,6 +15,7 @@
     - [ ] check differences between mise, aqua, vfox
     - [ ] zsh moar autocompletion (maybe use something better that zsh-autocomplete?)
     - [ ] share zsh history (use atuin or something like that)
+    - [ ] maybe try to use chezmoi?
 
 - new laptop migration
     - [ ] cleanup tfstate
