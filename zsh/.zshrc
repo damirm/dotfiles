@@ -30,7 +30,7 @@ plugins=(
     # zoxide
 )
 
-if type brew &>/dev/null; then
+if command -v brew &> /dev/null; then
   export HOMEBREW_EDITOR=nvim
 
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH

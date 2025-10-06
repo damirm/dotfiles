@@ -16,6 +16,8 @@
     - [ ] zsh moar autocompletion (maybe use something better that zsh-autocomplete?)
     - [ ] share zsh history (use atuin or something like that)
     - [ ] maybe try to use chezmoi?
+    - [ ] screen qr code scanner
+    - [ ] terminal totp
 
 - new laptop migration
     - [ ] cleanup tfstate
