@@ -47,3 +47,10 @@ defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool 
 # Remove TimeMachine menu bar icon.
 # defaults delete "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.TimeMachine"
 # defaults delete "com.apple.systemuiserver" "NSStatusItem Visible com.apple.menuextra.TimeMachine"
+
+# defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false              # For VS Code
+# defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false      # For VS Code Insider
+# defaults write com.vscodium ApplePressAndHoldEnabled -bool false                      # For VS Codium
+# defaults write com.microsoft.VSCodeExploration ApplePressAndHoldEnabled -bool false   # For VS Codium Exploration users
+# defaults write com.exafunction.windsurf ApplePressAndHoldEnabled -bool false          # For Windsurf
+# defaults delete -g ApplePressAndHoldEnabled
