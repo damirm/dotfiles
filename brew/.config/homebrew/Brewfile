@@ -41,6 +41,7 @@ brew "duf"
 brew "dust"
 brew "dua-cli"
 brew "lazydocker"
+brew "docker"
 brew "lazygit"
 brew "eza"
 # TODO: Use mise.
