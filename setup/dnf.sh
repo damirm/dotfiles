@@ -4,6 +4,11 @@ echo "Setup dnf..."
 sudo dnf config-manager setopt fastestmirror=true
 sudo dnf config-manager setopt max_parallel_downloads=20
 
+# sudo dnf config-manager setopt \
+#   'fedora-cisco-openh264.enabled=1' \
+#   'fedora-cisco-openh264.metalink=' \
+#   'fedora-cisco-openh264.baseurl=https://codecs.fedoraproject.org/openh264/$releasever/$basearch/'
+
 echo "Enable dnf repositories..."
 sudo dnf copr enable -y jdxcode/mise
 sudo dnf copr enable -y atim/starship
@@ -32,7 +37,7 @@ fi
 #     sudo dnf config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/shells:zsh-users:zsh-autosuggestions/Fedora_Rawhide/shells:zsh-users:zsh-autosuggestions.repo
 # fi
 
-sudo dnf update -y --skip-unavailable
+sudo dnf update -y --skip-unavailable --exclude openh264
 
 # echo "Updating firmware..."
 # sudo fwupdmgr refresh --force
