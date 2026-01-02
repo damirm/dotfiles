@@ -16,6 +16,7 @@ gext install Vitals@CoreCoding.com
 # gext install just-perfection-desktop@just-perfection
 gext install undecorate@sun.wxg@gmail.com
 gext install KeepAwake@jepfa.de
+gext install gsconnect@andyholmes.github.io
 
 echo "Installing gnome settings..."
 gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier', 'grp:alt_space_toggle']"
