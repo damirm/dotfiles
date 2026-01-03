@@ -1,9 +1,9 @@
 return {
 	{
 		"mcauley-penney/techbase.nvim",
-		enabled = true,
 		priority = 1000,
-		config = function(_, opts)
+		enabled = true,
+		config = function()
 			vim.cmd.colorscheme("techbase")
 		end,
 	},
@@ -13,7 +13,7 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme("catppuccin")
+			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
 	},
 	{
@@ -23,6 +23,23 @@ return {
 		priority = 1000,
 		config = function()
 			vim.cmd.colorscheme("rose-pine")
+		end,
+	},
+	{
+		"AlexvZyl/nordic.nvim",
+		enabled = false,
+		priority = 1000,
+		config = function()
+			require("nordic").load()
+			vim.cmd.colorscheme("nordic")
+		end,
+	},
+	{
+		"rebelot/kanagawa.nvim",
+		enabled = false,
+		priority = 1000,
+		config = function()
+			vim.cmd.colorscheme("kanagawa")
 		end,
 	},
 }
