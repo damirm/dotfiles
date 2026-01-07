@@ -47,7 +47,7 @@ gsettings set org.gnome.desktop.wm.keybindings maximize "['<Super>Up']"
 
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 gsettings set org.gnome.desktop.interface show-battery-percentage true
-gsettings set org.gnome.desktop.interface enable-animations false
+gsettings set org.gnome.desktop.interface enable-animations true
 gsettings set org.gnome.desktop.interface clock-format '24h'
 gsettings set org.gnome.desktop.interface clock-show-date true
 gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'

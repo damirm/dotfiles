@@ -14,6 +14,8 @@ flatpak install -y flathub \
   com.jetbrains.IntelliJ-IDEA-Community \
   com.visualstudio.code \
   com.todoist.Todoist \
-  org.localsend.localsend_app
+  org.localsend.localsend_app \
+  io.github.kolunmi.Bazaar \
+  io.gitlab.adhami3310.Impression
 
 # org.mozilla.Thunderbird

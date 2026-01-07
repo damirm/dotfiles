@@ -82,7 +82,8 @@ sudo dnf install -y \
   ansible \
   ncdu \
   @virtualization \
-  kubernetes-client
+  kubernetes-client \
+  direnv
 
 sudo usermod -a -G libvirt $(whoami)
 
