@@ -8,8 +8,10 @@
     - [ ] different font size for macbook and thinkpad (14 vs 16)
     - [ ] firefox policy.json
     - [ ] firefox custom shortcuts
+    - [ ] should I migrate some dnf packages to homebrew for fedora?
 
 - all
+    - [ ] install ubuntu multipass for both macos and fedora
     - [ ] alacritty terminal shell program does not work (env.shell works, but it's bad practice)
     - [ ] different nvim colorscheme in tmux (tmux is actually good, but without tmux is bad)
     - [ ] check differences between mise, aqua, vfox
@@ -18,6 +20,3 @@
     - [ ] maybe try to use chezmoi?
     - [ ] screen qr code scanner
     - [ ] terminal totp
-
-- new laptop migration
-    - [ ] cleanup tfstate
