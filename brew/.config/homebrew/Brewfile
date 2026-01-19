@@ -116,6 +116,9 @@ cask "stats"
 cask "spotify"
 cask "yandex-music"
 cask "keka"
+cask "utm"
+cask "multipass"
+cask "virtualbox"
 
 # Notes
 cask "obsidian"
