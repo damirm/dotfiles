@@ -9,6 +9,7 @@
     - [ ] firefox policy.json
     - [ ] firefox custom shortcuts
     - [ ] should I migrate some dnf packages to homebrew for fedora?
+    - [ ] add config for any other distro
 
 - all
     - [ ] install ubuntu multipass for both macos and fedora

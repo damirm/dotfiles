@@ -83,7 +83,8 @@ sudo dnf install -y \
   ncdu \
   @virtualization \
   kubernetes-client \
-  direnv
+  direnv \
+  virtualbox
 
 sudo usermod -a -G libvirt $(whoami)
 
