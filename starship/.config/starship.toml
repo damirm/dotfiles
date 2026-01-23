@@ -1,3 +1,5 @@
+right_format = "$time"
+
 [aws]
 disabled = true
 
@@ -10,3 +12,7 @@ when = 'arc root'
 
 [kubernetes]
 disabled = false
+
+[time]
+disabled = false
+format = '[$time]($style) '
