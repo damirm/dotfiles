@@ -74,6 +74,8 @@ brew "colima"
 brew "tree-sitter"
 brew "tree-sitter-cli"
 brew "direnv"
+brew "ffmpeg"
+brew "imagemagick"
 
 # brew "lnav"
 # brew "helix"
