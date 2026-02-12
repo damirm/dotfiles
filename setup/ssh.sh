@@ -7,6 +7,7 @@ KEYS=(
   "$HOME/.ssh/raspberry_id_$ALGORITHM"
   "$HOME/.ssh/homelab_id_$ALGORITHM"
   "$HOME/.ssh/github_id_$ALGORITHM"
+  "$HOME/.ssh/cudy_id_$ALGORITHM"
 )
 
 for key in ${KEYS[*]}; do
