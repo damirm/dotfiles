@@ -4,4 +4,4 @@ set -ex
 
 CLOUDIA_DIR="$HOME/cloudia"
 
-arc mount -r cloudia -m "$CLOUDIA_DIR"
+arc mount -r cloudia -m "$CLOUDIA_DIR" --allow-other

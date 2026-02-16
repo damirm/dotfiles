@@ -137,6 +137,7 @@ return {
 				},
 				yamlls = {},
 				html = {},
+				svelte = {},
 
 				-- ruff = {},
 				-- nimlsp = {},

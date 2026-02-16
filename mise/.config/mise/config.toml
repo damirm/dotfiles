@@ -1,7 +1,7 @@
 [tools]
 go = '1.21'
 rust = '1.89'
-java = ['temurin-21']
+java = ['temurin-21', 'temurin-24', 'temurin-25']
 zig = '0.15'
 bun = '1.2'
 deno = '2.4'
