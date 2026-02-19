@@ -52,3 +52,5 @@ if [ -f "$HOME/yandex-cloud/completion.zsh.inc" ]; then source "$HOME/yandex-clo
 # The next line updates PATH for Yandex Cloud Private CLI.
 if [ -f "$HOME/ycp/path.bash.inc" ]; then source "$HOME/ycp/path.bash.inc"; fi
 
+if [ -d "~/.lmstudio/bin" ]; then export PATH="$PATH:~/.lmstudio/bin"; fi
+

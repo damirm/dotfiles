@@ -81,7 +81,21 @@ brew "imagemagick"
 # brew "helix"
 # brew "micro"
 # brew "kakoune"
-# brew "ollama"
+
+# AI
+brew "ollama"
+brew "opencode"
+brew "aider"
+brew "gemini-cli"
+brew "block-goose-cli"
+cask "block-goose"
+cask "claude-code"
+cask "codex"
+cask "opencode-desktop"
+cask "ollama-app"
+cask "jan"
+cask "lm-studio"
+cask "chatbox"
 
 # Casks
 
