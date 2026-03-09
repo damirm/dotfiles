@@ -83,5 +83,6 @@ y = 0
 [general]
 live_config_reload = true
 import = [
-    "~/.config/alacritty/themes/taerminal.toml"
+    # "~/.config/alacritty/themes/taerminal.toml"
+    "~/.config/alacritty/themes/github_dark_default.toml"
 ]
