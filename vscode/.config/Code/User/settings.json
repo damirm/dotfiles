@@ -24,8 +24,7 @@
   },
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "quickfix.biome": "explicit",
-    "source.organizeImports.biome": "explicit",
+    "source.fixAll.biome": "explicit",
   },
   "biome.requireConfiguration": false,
   "biome.lspBin": "biome",
@@ -39,4 +38,9 @@
     "https://json-schema.org/": true,
     "https://biomejs.dev": true,
   },
+  "claudeCode.disableLoginPrompt": true,
+  "claudeCode.environmentVariables": [],
+  "claudeCode.selectedModel": "opus",
+  "workbench.colorTheme": "GitHub Dark",
+  "geminicodeassist.displayInlineContextHint": false,
 }

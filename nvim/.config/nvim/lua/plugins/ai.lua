@@ -1,22 +1,27 @@
-return {}
+return {
+	{
+		"sudo-tee/opencode.nvim",
+		config = function()
+			require("opencode").setup({})
+		end,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			{
+				"MeanderingProgrammer/render-markdown.nvim",
+				opts = {
+					anti_conceal = { enabled = false },
+					file_types = { "markdown", "opencode_output" },
+				},
+				ft = { "markdown", "Avante", "copilot-chat", "opencode_output" },
+			},
+			-- Optional, for file mentions and commands completion, pick only one
+			"saghen/blink.cmp",
 
--- AI
--- return {
---     "yetone/avante.nvim",
---     event = "VeryLazy",
---     version = false,
---     build = "make",
---     dependencies = {
---         "nvim-treesitter/nvim-treesitter",
---         "stevearc/dressing.nvim",
---         "nvim-lua/plenary.nvim",
---         "MunifTanjim/nui.nvim",
---         --- The below dependencies are optional,
---         "echasnovski/mini.pick",         -- for file_selector provider mini.pick
---         "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
---         "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
---         "ibhagwan/fzf-lua",              -- for file_selector provider fzf
---         "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
---         "zbirenbaum/copilot.lua",        -- for providers='copilot'
---     },
--- },
+			-- Optional, for file mentions picker, pick only one
+			"folke/snacks.nvim",
+			-- 'nvim-telescope/telescope.nvim',
+			-- 'ibhagwan/fzf-lua',
+			-- 'nvim_mini/mini.nvim',
+		},
+	},
+}
