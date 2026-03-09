@@ -1,0 +1,21 @@
+[tools]
+go = '1.24.13'
+rust = '1.89'
+java = ['temurin-21', 'temurin-24', 'temurin-25']
+zig = '0.15'
+bun = '1.2'
+deno = '2.4'
+node = '24.6'
+gradle = '9.0.0'
+terraform = '1.13.3'
+maven = '3.9.11'
+python = "3.14.2"
+packer = "1.14.3"
+
+[settings]
+trusted_config_paths = [
+    '~/dev/github.com/damirm/'
+]
+
+[settings.url_replacements]
+"releases.hashicorp.com" = "mirror.yandex.ru/mirrors/releases.hashicorp.com"

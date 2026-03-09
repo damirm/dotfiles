@@ -1,0 +1,67 @@
+# Chezmoi internal files
+.chezmoi.toml
+.chezmoi.toml.tmpl
+.chezmoiignore
+.chezmoiremove
+.chezmoiversion
+.chezmoiexternal.toml
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+README.md
+LICENSE
+
+# Old stow structure
+alacritty/
+brew/
+fedora/
+git/
+kitty/
+mise/
+nvim/
+scripts/
+sesh/
+setup/
+ssh/
+starship/
+terraform/
+tmux/
+vscode/
+zsh/
+
+# Install scripts
+install.sh
+
+# OS-specific generated files
+**/*.local
+**/*.cache
+**/*.log
+
+# Private files (should be encrypted separately)
+**/private_*
+**/.ssh/id_*
+**/.ssh/*_key*
+
+# VSCode sync (use Settings Sync instead)
+.vscode/
+
+# Local zsh history
+.zsh_history
+.zhistory
+
+# Terraform state
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Nvim lazy-lock
+lazy-lock.json
+
+# TMUX plugins (managed by TPM)
+.config/tmux/plugins/
+
+# Homebrew lockfiles
+Brewfile.lock.json

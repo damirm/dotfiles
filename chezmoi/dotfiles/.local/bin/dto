@@ -1,0 +1,3 @@
+#!/bin/bash
+
+open https://st.yandex-team.ru/$(dt)

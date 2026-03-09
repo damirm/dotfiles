@@ -1,0 +1,50 @@
+pyclean () {
+    find . -type f -name "*.py[co]" -delete
+    find . -type d -name "__pycache__" -delete
+}
+
+patch-commit () {
+    git format-patch -1 $1 --stdout | patch -p1 --verbose --no-backup-if-mismatch
+}
+
+wttr () {
+    curl wttr.in/$1
+}
+
+pretty-json () {
+    if [ ! -f "${1}" ]; then
+        echo "File ${1} doesn't exists"
+        exit 1
+    fi
+
+    cat "${1}" | jq . | tee "${1}"
+}
+
+reorganize-downloaded-pdfs () {
+    base_dir=/Users/yesworld/Projects/github.com/damirm/ansible-mac-dev/roles/common/files/bin
+    ${base_dir}/directory-files-mover.py --source-dir ~/Downloads --destination-dir ~/Yandex.Disk.localized/Tickets
+}
+
+gc_git() {( cd "$1" && echo && echo "$PWD" && git gc --aggressive && for path in $(git submodule | awk '{ print $2 }'); do gc_git "$path"; done )}
+
+encrypted-archive() {
+    file_name=$(basename $1)
+    archive_name="${file_name}.tar.gz"
+
+    echo -n "Password: "
+    read -s password
+    echo
+
+    tar -cvzf "${archive_name}" "$1"
+    echo "${password}" | openssl enc -in "${archive_name}" -aes-256-cbc -pass stdin > "${archive_name}.enc" && rm "${archive_name}"
+}
+
+decrypted-archive() {
+    archive_name="${1%.*}"
+
+    echo -n "Password: "
+    read -s password
+    echo
+
+    echo "${password}" | openssl enc -in "${1}" -aes-256-cbc -pass stdin -d > "${archive_name}" && tar -xvzf "${archive_name}" && rm "${archive_name}"
+}

@@ -1,0 +1,60 @@
+{{- /* Chezmoi configuration template */ -}}
+{{- $os := .chezmoi.os }}
+{{- $arch := .chezmoi.arch }}
+{{- $hostname := .chezmoi.hostname }}
+{{- $username := .chezmoi.username }}
+
+{{- /* OS Detection */ -}}
+{{- $is_macos := eq $os "darwin" }}
+{{- $is_linux := eq $os "linux" }}
+
+{{- /* Linux Distribution Detection */ -}}
+{{- $is_fedora := false }}
+{{- $is_cachyos := false }}
+{{- $is_arch := false }}
+{{- if $is_linux }}
+{{-   if hasPrefix "fedora" (lower (env "ID")) }}
+{{-     $is_fedora = true }}
+{{-   else if hasPrefix "cachyos" (lower (env "ID")) }}
+{{-     $is_cachyos = true }}
+{{-   else if hasPrefix "arch" (lower (env "ID")) }}
+{{-     $is_arch = true }}
+{{-   end }}
+{{- end }}
+
+{{- /* Desktop Environment Detection */ -}}
+{{- $xdg_current_desktop := env "XDG_CURRENT_DESKTOP" }}
+{{- $is_gnome := hasPrefix "GNOME" $xdg_current_desktop }}
+{{- $is_kde := hasPrefix "KDE" $xdg_current_desktop }}
+
+{{- /* Hostname-based configurations */ -}}
+{{- $font_size := 16 }}
+{{- if eq $hostname "macbook" }}
+{{-   $font_size = 14 }}
+{{- end }}
+
+{{- /* Data section for templates */ -}}
+[data]
+  # OS flags
+  is_macos = {{ $is_macos }}
+  is_linux = {{ $is_linux }}
+  is_fedora = {{ $is_fedora }}
+  is_cachyos = {{ $is_cachyos }}
+  is_arch = {{ $is_arch }}
+  
+  # Desktop Environment flags
+  is_gnome = {{ $is_gnome }}
+  is_kde = {{ $is_kde }}
+  
+  # System info
+  hostname = {{ $hostname | quote }}
+  username = {{ $username | quote }}
+  os = {{ $os | quote }}
+  arch = {{ $arch | quote }}
+  
+  # Configurations
+  font_size = {{ $font_size }}
+  
+  # Paths
+  home_dir = {{ .chezmoi.homeDir | quote }}
+  os_name = {{ if $is_macos }}"darwin"{{ else }}"linux"{{ end }}

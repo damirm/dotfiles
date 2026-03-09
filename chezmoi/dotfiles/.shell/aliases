@@ -1,0 +1,6 @@
+alias yav="ya vault"
+alias cat="bat"
+alias gfp="git fetch --prune"
+alias ttc="tracker-ticket-creator"
+alias ttca="tracker-ticket-creator --component 157196"
+alias ycs3="aws s3 --endpoint-url=https://storage.yandexcloud.net"

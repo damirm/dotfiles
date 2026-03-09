@@ -1,0 +1,75 @@
+[yandex-fedora]
+name=Yandex Fedora $releasever - $basearch
+baseurl=https://mirror.yandex.ru/fedora/linux/releases/$releasever/Everything/$basearch/os/
+enabled=1
+countme=1
+metadata_expire=7d
+repo_gpgcheck=0
+type=rpm
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
+skip_if_unavailable=False
+
+[yandex-updates]
+name=Yandex Fedora $releasever - $basearch - Updates
+baseurl=https://mirror.yandex.ru/fedora/linux/updates/$releasever/Everything/$basearch/
+enabled=1
+countme=1
+repo_gpgcheck=0
+type=rpm
+gpgcheck=1
+metadata_expire=6h
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
+skip_if_unavailable=False
+
+[yandex-rpmfusion-free]
+name=Yandex RPM Fusion for Fedora $releasever - Free
+baseurl=https://mirror.yandex.ru/fedora/rpmfusion/free/fedora/releases/$releasever/Everything/$basearch/os/
+enabled=1
+metadata_expire=14d
+type=rpm-md
+gpgcheck=1
+repo_gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-fedora-$releasever
+
+[yandex-rpmfusion-free-updates]
+name=Yandex RPM Fusion for Fedora $releasever - Free - Updates
+baseurl=https://mirror.yandex.ru/fedora/rpmfusion/free/fedora/updates/$releasever/$basearch/
+enabled=1
+enabled_metadata=1
+type=rpm-md
+gpgcheck=1
+repo_gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-fedora-$releasever
+
+[yandex-rpmfusion-nonfree]
+name=Yandex RPM Fusion for Fedora $releasever - Nonfree
+baseurl=https://mirror.yandex.ru/fedora/rpmfusion/nonfree/fedora/releases/$releasever/Everything/$basearch/os/
+enabled=1
+enabled_metadata=1
+metadata_expire=14d
+type=rpm-md
+gpgcheck=1
+repo_gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-nonfree-fedora-$releasever
+
+[yandex-rpmfusion-nonfree-steam]
+name=Yandex RPM Fusion for Fedora $releasever - Nonfree - Steam
+baseurl=https://mirror.yandex.ru/fedora/rpmfusion/nonfree/fedora/steam/$releasever/$basearch/
+enabled=1
+type=rpm-md
+gpgcheck=1
+repo_gpgcheck=0
+gpgkey=file:///usr/share/distribution-gpg-keys/rpmfusion/RPM-GPG-KEY-rpmfusion-nonfree-fedora-$releasever
+skip_if_unavailable=True
+
+[yandex-rpmfusion-nonfree-updates]
+name=Yandex RPM Fusion for Fedora $releasever - Nonfree - Updates
+baseurl=https://mirror.yandex.ru/fedora/rpmfusion/nonfree/fedora/updates/$releasever/$basearch/
+enabled=1
+enabled_metadata=1
+type=rpm-md
+gpgcheck=1
+repo_gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-nonfree-fedora-$releasever
+

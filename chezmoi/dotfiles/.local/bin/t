@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+ISSUE_RE="[A-Z]+-\d+"
+
+if git rev-parse --is-inside-work-tree &> /dev/null; then
+  BRANCH=$(git branch --show-current)
+elif arc rev-parse --is-inside-work-tree &> /dev/null; then
+  BRANCH=$(arc info --json | jq -r .branch)
+else
+  exit 0
+fi
+
+ISSUE=$(echo "$BRANCH" | grep -Eo ${ISSUE_RE})
+
+if [ -n "${ISSUE}" ]; then
+  echo "${ISSUE}"
+fi

@@ -1,0 +1,46 @@
+{
+  "editor.fontFamily": "JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 15,
+  "editor.scrollBeyondLastLine": false,
+  "codesnap.showWindowControls": false,
+  "explorer.autoReveal": "focusNoScroll",
+  "workbench.editor.wrapTabs": true,
+  "files.trimTrailingWhitespace": true,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": true,
+  "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-auto",
+  "workbench.settings.applyToAllProfiles": ["editor.defaultFormatter"],
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome",
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome",
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+  },
+  "biome.requireConfiguration": false,
+  "biome.lspBin": "biome",
+  "editor.formatOnPaste": true,
+  "markdown-preview-enhanced.liveUpdate": true,
+  "json.schemaDownload.trustedDomains": {
+    "https://schemastore.azurewebsites.net/": true,
+    "https://raw.githubusercontent.com/": true,
+    "https://www.schemastore.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://json-schema.org/": true,
+    "https://biomejs.dev": true,
+  },
+  "claudeCode.disableLoginPrompt": true,
+  "claudeCode.environmentVariables": [],
+  "claudeCode.selectedModel": "opus",
+  "workbench.colorTheme": "GitHub Dark",
+  "geminicodeassist.displayInlineContextHint": false,
+}

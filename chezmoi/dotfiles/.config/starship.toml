@@ -1,0 +1,18 @@
+right_format = "$time"
+
+[aws]
+disabled = true
+
+[package]
+disabled = true
+
+[custom.cloudia-branch]
+command = 'arc info --json | jq -r .branch'
+when = 'arc root'
+
+[kubernetes]
+disabled = false
+
+[time]
+disabled = false
+format = '[$time]($style) '

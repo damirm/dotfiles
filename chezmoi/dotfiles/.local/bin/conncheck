@@ -1,0 +1,11 @@
+#!/bin/bash
+
+HOST=$1
+PORT=$2
+INTERVAL=$3
+CONN_TIMEOUT=1
+
+while true; do
+    nc -G ${CONN_TIMEOUT} -vz ${HOST} ${PORT} &> /dev/null && echo -n "." || echo -n "F";
+    sleep $INTERVAL
+done

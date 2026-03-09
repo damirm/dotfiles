@@ -1,0 +1,22 @@
+# Remove old stow symlinks and directories when applying chezmoi
+# These will be replaced by chezmoi-managed files
+
+# Old config directories (will be replaced)
+.config/alacritty
+.config/nvim
+.config/starship.toml
+.config/starship
+.config/tmux
+.config/sesh
+.config/kitty
+.config/homebrew
+.config/vscode
+
+# Old dotfiles
+.gitconfig
+.gitignore
+.zshrc
+.terraformrc
+
+# Note: SSH keys are NOT removed for safety
+# .ssh/config will be managed but keys stay untouched
