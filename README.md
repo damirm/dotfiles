@@ -21,3 +21,4 @@
     - [ ] maybe try to use chezmoi?
     - [ ] screen qr code scanner
     - [ ] terminal totp
+    - [ ] Move ~/bin to ~/.local/bin

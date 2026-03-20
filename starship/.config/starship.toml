@@ -12,6 +12,16 @@ when = 'arc root'
 
 [kubernetes]
 disabled = false
+style = "blue bold"
+
+[[kubernetes.contexts]]
+context_pattern = ".*PROD.*"
+style = "bold white bg:red"
+symbol = "⛔ "
+
+[[kubernetes.contexts]]
+context_pattern = ".*preprod.*"
+style = "bold yellow"
 
 [time]
 disabled = false
