@@ -48,3 +48,19 @@ decrypted-archive() {
 
     echo "${password}" | openssl enc -in "${1}" -aes-256-cbc -pass stdin -d > "${archive_name}" && tar -xvzf "${archive_name}" && rm "${archive_name}"
 }
+
+mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
+
+ff() {
+  find . -type f -iname "*$1*"
+}
+
+psg() {
+  ps aux | grep -i "$1" | grep -v grep
+}
+
+myip() {
+  curl -s ifconfig.me
+}
