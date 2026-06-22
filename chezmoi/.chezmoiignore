@@ -65,3 +65,8 @@ lazy-lock.json
 
 # Homebrew lockfiles
 Brewfile.lock.json
+
+# GNOME-only autostart entries
+{{- if not .is_gnome }}
+.config/autostart/ulauncher.desktop
+{{- end }}
